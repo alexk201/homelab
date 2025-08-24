@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-gateway
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: sealed-secrets
+  namespace: nginx-gateway
+spec:
+  interval: 60m
+  url: oci://ghcr.io/nginx/charts/nginx-gateway-fabric
+  ref:
+    tag: 2.1.0
